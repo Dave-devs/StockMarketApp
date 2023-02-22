@@ -1,7 +1,7 @@
 package com.dave_devs.stockmarketapp.feature_stock.data.repository
 
 import com.dave_devs.stockmarketapp.feature_stock.data.csv.CSVParser
-import com.dave_devs.stockmarketapp.feature_stock.data.local.StockDatabase
+import com.dave_devs.stockmarketapp.feature_stock.data.local.StockDao
 import com.dave_devs.stockmarketapp.feature_stock.data.mapper.toCompanyListing
 import com.dave_devs.stockmarketapp.feature_stock.data.mapper.toCompanyListingEntity
 import com.dave_devs.stockmarketapp.feature_stock.data.remote.StockApi
@@ -16,10 +16,9 @@ import javax.inject.Inject
 
 class StockRepositoryImpl @Inject constructor(
     private val api: StockApi,
-    private val db: StockDatabase,
+    private val dao: StockDao,
     private val companyListingsParser: CSVParser<CompanyListing>
 ): StockRepository {
-    private val dao = db.dao
 
     override suspend fun getCompanyListings(
         fetchFromRemote: Boolean,
