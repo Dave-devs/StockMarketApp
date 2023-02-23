@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
     id 'kotlin-parcelize'
+    id 'com.google.devtools.ksp' version '1.7.21-1.0.8'
 }
 
 android {
@@ -70,11 +71,11 @@ dependencies {
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.29.1-alpha"
     // Compose dependencies
     implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1"
-    implementation "androidx.compose.material:material-icons-extended:$compose_version"
     implementation "androidx.activity:activity-compose:1.6.0-alpha01"
     implementation "com.google.accompanist:accompanist-swiperefresh:0.24.2-alpha"
-    //Compose Navigation
-    implementation "androidx.navigation:navigation-compose:2.6.0-alpha05"
+    // Compose Nav Destinations
+    implementation 'io.github.raamcosta.compose-destinations:core:1.7.33-beta'
+    ksp 'io.github.raamcosta.compose-destinations:ksp:1.7.33-beta'
     //Dagger - Hilt
     implementation "com.google.dagger:hilt-android:2.44.2"
     kapt "com.google.dagger:hilt-android-compiler:2.44.2"
@@ -83,7 +84,7 @@ dependencies {
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
     implementation "com.squareup.okhttp3:okhttp:5.0.0-alpha.3"
     implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.3"
     // Room

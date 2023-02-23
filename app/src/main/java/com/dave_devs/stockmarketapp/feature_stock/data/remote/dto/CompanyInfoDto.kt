@@ -1,11 +1,12 @@
 package com.dave_devs.stockmarketapp.feature_stock.data.remote.dto
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
+
 
 data class CompanyInfoDto(
-    @SerializedName("Symbol") val symbol: String?,
-    @SerializedName("Description") val description: String?,
-    @SerializedName("Name") val name: String?,
-    @SerializedName("Country") val country: String?,
-    @SerializedName("Industry") val industry: String?
+    @field:Json(name = "Symbol") val symbol: String?,
+    @field:Json(name = "Description") val description: String?,
+    @field:Json(name = "Name") val name: String?,
+    @field:Json(name = "Country") val country: String?,
+    @field:Json(name = "Industry") val industry: String?
 )

@@ -11,16 +11,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
-import com.dave_devs.stockmarketapp.feature_stock.domain.util.Routes
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
+@Destination(start = true)
 fun CompanyListingsScreen(
+    navigator: DestinationsNavigator,
     modifier: Modifier = Modifier,
-    navController: NavController,
     viewModel: CompanyListingsViewModel = hiltViewModel()
 ) {
     val swipeRefreshState = rememberSwipeRefreshState(
@@ -71,7 +72,9 @@ fun CompanyListingsScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-                                navController.navigate(Routes.COMPANY_INFO_SCREEN)
+                                navigator.navigate(
+                                    CompanyInfoScreenDestination(company.symbol)
+                                )
                             }
                             .padding(16.dp)
                     )
